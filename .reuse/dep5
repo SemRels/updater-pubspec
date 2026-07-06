@@ -1,0 +1,39 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: updater-pubspec
+Upstream-Contact: SemRels Maintainers <https://github.com/SemRels/updater-pubspec>
+Source: https://github.com/SemRels/updater-pubspec
+
+# ----------------------------------------------------------------------------
+# Documentation and community health files
+# ----------------------------------------------------------------------------
+Files: *.md
+ .github/**/*.md
+Copyright: 2026 The SemRels Authors
+License: Apache-2.0
+
+# ----------------------------------------------------------------------------
+# Build and tooling configuration
+# ----------------------------------------------------------------------------
+Files: Makefile
+ Dockerfile
+ go.mod
+ go.sum
+ .golangci.yml
+ .gitignore
+ .github/**/*.yml
+ .github/**/*.yaml
+ .github/**/*.json
+ .reuse/dep5
+ cmd/**/*.go
+ internal/**/*.go
+Copyright: 2026 The SemRels Authors
+License: Apache-2.0
+
+# ----------------------------------------------------------------------------
+# Legal files
+# ----------------------------------------------------------------------------
+Files: LICENSE
+ LICENSES/Apache-2.0.txt
+ .reuse/dep5
+Copyright: 2026 The SemRels Authors
+License: Apache-2.0
