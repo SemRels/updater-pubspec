@@ -31,7 +31,7 @@ func run(stdout, stderr io.Writer, getenv func(string) string, updater updater) 
 		version = getenv("SEMREL_NEXT_VERSION")
 	}
 	if version == "" {
-		fmt.Fprintln(stderr, "updater-pubspec: SEMREL_VERSION is required")
+		_, _ = fmt.Fprintln(stderr, "updater-pubspec: SEMREL_VERSION is required")
 		return 1
 	}
 
@@ -50,26 +50,26 @@ func run(stdout, stderr io.Writer, getenv func(string) string, updater updater) 
 	if strings.EqualFold(getenv("SEMREL_DRY_RUN"), "true") {
 		result, err := updater.Prepare(file, version, opts)
 		if err != nil {
-			fmt.Fprintf(stderr, "updater-pubspec: %v\n", err)
+			_, _ = fmt.Fprintf(stderr, "updater-pubspec: %v\n", err)
 			return 1
 		}
 		emitWarnings(stderr, result.Warnings)
-		fmt.Fprintf(stdout, "updater-pubspec: [dry-run] %s\n", result.VersionLine)
+		_, _ = fmt.Fprintf(stdout, "updater-pubspec: [dry-run] %s\n", result.VersionLine)
 		return 0
 	}
 
 	result, err := updater.Update(file, version, opts)
 	if err != nil {
-		fmt.Fprintf(stderr, "updater-pubspec: %v\n", err)
+		_, _ = fmt.Fprintf(stderr, "updater-pubspec: %v\n", err)
 		return 1
 	}
 	emitWarnings(stderr, result.Warnings)
-	fmt.Fprintf(stdout, "updater-pubspec: updated %s to %s\n", file, result.Version)
+	_, _ = fmt.Fprintf(stdout, "updater-pubspec: updated %s to %s\n", file, result.Version)
 	return 0
 }
 
 func emitWarnings(stderr io.Writer, warnings []string) {
 	for _, warning := range warnings {
-		fmt.Fprintf(stderr, "updater-pubspec: warning: %s\n", warning)
+		_, _ = fmt.Fprintf(stderr, "updater-pubspec: warning: %s\n", warning)
 	}
 }
