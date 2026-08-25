@@ -13,7 +13,7 @@ Thank you for your interest in contributing.
 1. Fork the repository and clone it locally
 2. Create a topic branch from `main`
 3. Keep changes focused and easy to review
-4. Run the relevant tests, lint checks, and build steps for the repo
+4. Run the relevant tests, lint checks, and build steps for the repo type
 5. Update docs when behavior, APIs, or contributor workflow changes
 6. Open a pull request against `main`
 
@@ -31,7 +31,7 @@ chore(ci): update workflow configuration
 
 ## DCO / Signed-off-by
 
-If `.github/workflows/dco.yml` is present, every commit must contain a valid `Signed-off-by` trailer.
+Type A and Type B repositories should normally enable DCO. If `.github/workflows/dco.yml` is present, every commit must contain a valid `Signed-off-by` trailer.
 
 ```bash
 git commit -s -m "feat: my change"
