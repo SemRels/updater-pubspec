@@ -2,7 +2,7 @@
 
 ## Overview
 
-updater-pubspec is an open source project governed by its maintainers and community contributors. This document describes how decisions are made and how to participate.
+{{PROJECT_NAME}} is an open source project governed by its maintainers and community contributors. This document describes how decisions are made and how to participate.
 
 ## Project Roles
 
@@ -34,7 +34,10 @@ If consensus cannot be reached, active maintainers vote. Each maintainer has one
 
 ## Scope By Repository Type
 
-- **Type C / Single Plugin:** governance applies to plugin quality gates, release expectations, and compatibility policy.
+- **Type A / Core:** full governance applies, including architecture and release policy decisions
+- **Type B / Plugin Collection:** governance applies to plugin quality gates, release expectations, and compatibility policy
+- **Type C / Single Plugin:** maintainers may simplify process, but ownership and decision rules should remain documented
+- **Type D / Documentation:** governance can stay lightweight, but maintainers, review expectations, and change process should still be explicit
 
 ## Changes to Governance
 

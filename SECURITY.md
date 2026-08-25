@@ -3,36 +3,34 @@
 ## Supported Versions
 
 | Version | Supported |
-|---------|-----------|
-| `main` (pre-release) | ✅ |
+| --- | --- |
+| `main` / `{{DEFAULT_BRANCH}}` | ? |
 
-Once stable releases are published this table will list supported version ranges.
+Update this table once stable releases exist.
 
 ## Reporting a Vulnerability
 
-**Please do not open a public GitHub Issue for security vulnerabilities.**
+**Do not open a public issue for security vulnerabilities.**
 
-Report security issues privately via **[GitHub Security Advisories](https://github.com/SemRels/updater-pubspec/security/advisories/new)**.
+Please report vulnerabilities through **[GitHub Security Advisories]({{SECURITY_ADVISORY_URL}})**.
 
-You can also reach the maintainers listed in [MAINTAINERS.md](MAINTAINERS.md).
+Alternative contact: {{SECURITY_CONTACT}}
 
-### What to include
+## What To Include
 
-- Description of the vulnerability and its potential impact
-- Steps to reproduce or a proof-of-concept (if available)
-- Affected versions
-- Any suggested mitigations
+- Description of the vulnerability and potential impact
+- Steps to reproduce or proof of concept, if available
+- Affected versions, tags, or commits
+- Proposed mitigations or workarounds, if known
 
-### Response SLA
+## Response Targets
 
 | Action | Target |
-|--------|--------|
+| --- | --- |
 | Initial acknowledgement | 48 hours |
 | Status update | 7 days |
-| Patch / mitigation | 90 days |
+| Patch or mitigation plan | 90 days |
 
-We follow responsible disclosure. We will coordinate a public disclosure date with you.
+## Disclosure
 
-## Repository Scope
-
-This policy applies to all code, automation, and documentation maintained in updater-pubspec.
+SemRels projects follow responsible disclosure. Coordinate a publication date with maintainers before public disclosure.
