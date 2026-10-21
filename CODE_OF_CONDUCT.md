@@ -1,6 +1,6 @@
 # Code of Conduct
 
-updater-pubspec is committed to providing a welcoming and harassment-free community.
+`updater-pubspec` is committed to providing a welcoming and harassment-free community.
 
 ## Our Pledge
 
