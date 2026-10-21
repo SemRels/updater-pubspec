@@ -38,20 +38,22 @@ cosign verify ghcr.io/semrels/updater-pubspec:latest \
 
 ```yaml
 plugins:
-  - name: updater-pubspec
-    path: ~/.semrel/plugins/semrel-plugin-updater-pubspec
-    env:
-      SEMREL_PLUGIN_PUBSPEC_PATH: "packages/app/pubspec.yaml"
-      SEMREL_PLUGIN_PUBSPEC_BUILD_STRATEGY: "increment"
+  - uses: "@semrel/updater-pubspec"
+    phase: pre-tag
+    args:
+      pubspec_path: "packages/app/pubspec.yaml"
+      pubspec_build_strategy: "increment"
 ```
 
-## `SEMREL_PLUGIN_*` variables
+## Options
 
-| Name | Required | Description | Default |
-| --- | --- | --- | --- |
-| `SEMREL_PLUGIN_PUBSPEC_PATH` | Optional | Path to the `pubspec.yaml` file to update. | `./pubspec.yaml` |
-| `SEMREL_PLUGIN_PUBSPEC_BUILD_STRATEGY` | Optional | Build suffix strategy: `none`, `increment`, or `release-count`. | `none` |
-| `SEMREL_PLUGIN_PUBSPEC_BUILD_NUMBER` | Optional | Explicit build number override. When set it always wins and writes `SEMREL_VERSION+<number>`. | unset |
+Every option can be set as an entry under `args` in `.semrel.yaml`. semrel passes each entry to the plugin as the environment variable shown in the table, so you can also set that variable directly (for example in your CI environment) instead of using `args`.
+
+| Argument | Environment variable | Required | Description | Default |
+| --- | --- | --- | --- | --- |
+| `pubspec_path` | `SEMREL_PLUGIN_PUBSPEC_PATH` | Optional | Path to the `pubspec.yaml` file to update. | `./pubspec.yaml` |
+| `pubspec_build_strategy` | `SEMREL_PLUGIN_PUBSPEC_BUILD_STRATEGY` | Optional | Build suffix strategy: `none`, `increment`, or `release-count`. | `none` |
+| `pubspec_build_number` | `SEMREL_PLUGIN_PUBSPEC_BUILD_NUMBER` | Optional | Explicit build number override. When set it always wins and writes `SEMREL_VERSION+<number>`. | unset |
 
 ## `SEMREL_*` release context used
 
