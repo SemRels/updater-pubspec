@@ -14,16 +14,19 @@ License: Apache-2.0
 # ----------------------------------------------------------------------------
 # Build and tooling configuration
 # ----------------------------------------------------------------------------
-Files: Makefile
+Files: Taskfile.yml
+ Taskfile.yaml
  Dockerfile
  go.mod
  go.sum
  .golangci.yml
- .gitignore
+ .gitignore .pre-commit-config.yaml
+ .github/renovate.json
  .github/**/*.yml
  .github/**/*.yaml
  .github/**/*.json
  .reuse/dep5
+ commitlint.config.js
  cmd/**/*.go
  internal/**/*.go
 Copyright: 2026 The SemRels Authors
