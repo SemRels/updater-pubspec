@@ -7,6 +7,7 @@ package plugin
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -21,7 +22,26 @@ func TestUpdaterReplacesBareVersion(t *testing.T) {
 	require.Equal(t, "1.3.0", result.Version)
 	require.Equal(t, "version: 1.3.0", result.VersionLine)
 	require.Empty(t, result.Warnings)
+	require.Empty(t, result.Diff)
 	require.Equal(t, "name: demo\nversion: 1.3.0\ndescription: sample\n", readFile(t, file))
+}
+
+func TestUnifiedDiffReportsMissingFinalNewline(t *testing.T) {
+	t.Parallel()
+
+	diff := UnifiedDiff("pubspec.yaml", "version: 1.2.3\n", "version: 1.2.3")
+	require.Contains(t, diff, "-version: 1.2.3\n+version: 1.2.3\n\\ No newline at end of file\n")
+}
+
+func TestUnifiedDiffBoundsLargeChangedRegion(t *testing.T) {
+	t.Parallel()
+
+	before := strings.Repeat("before\n", 20_000)
+	after := strings.Repeat("after\n", 20_000)
+	diff := UnifiedDiff("pubspec.yaml", before, after)
+	require.Contains(t, diff, "@@ -1,20000 +1,20000 @@\n")
+	require.Equal(t, 20_000, strings.Count(diff, "-before\n"))
+	require.Equal(t, 20_000, strings.Count(diff, "+after\n"))
 }
 
 func TestUpdaterPreservesCommentsAndNestedVersions(t *testing.T) {

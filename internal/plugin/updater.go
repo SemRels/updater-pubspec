@@ -46,6 +46,10 @@ func NewUpdater() *Updater {
 
 // Prepare computes the updated file content without writing it.
 func (u *Updater) Prepare(path, version string, opts Options) (Result, error) {
+	return u.prepare(path, version, opts, true)
+}
+
+func (u *Updater) prepare(path, version string, opts Options, includeDiff bool) (Result, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return Result{}, fmt.Errorf("read %s: %w", path, err)
@@ -55,13 +59,15 @@ func (u *Updater) Prepare(path, version string, opts Options) (Result, error) {
 	if err != nil {
 		return Result{}, err
 	}
-	result.Diff = UnifiedDiff(path, before, result.Content)
+	if includeDiff {
+		result.Diff = UnifiedDiff(path, before, result.Content)
+	}
 	return result, nil
 }
 
 // Update rewrites the version field in pubspec.yaml.
 func (u *Updater) Update(path, version string, opts Options) (Result, error) {
-	result, err := u.Prepare(path, version, opts)
+	result, err := u.prepare(path, version, opts, false)
 	if err != nil {
 		return Result{}, err
 	}
