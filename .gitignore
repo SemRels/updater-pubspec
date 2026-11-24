@@ -29,3 +29,7 @@ build/
 
 # Local scratch
 .tmp/
+
+# Semrel
+.semrel/
+.semrel-analytics.jsonl
