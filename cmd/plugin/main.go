@@ -48,7 +48,7 @@ func run(stdout, stderr io.Writer, getenv func(string) string, updater updater) 
 		BuildNumber:         getenv("SEMREL_BUILD_NUMBER"),
 	}
 
-	if strings.EqualFold(getenv("SEMREL_DRY_RUN"), "true") || strings.EqualFold(getenv("SEMREL_PLUGIN_DRY_RUN"), "true") {
+	if strings.EqualFold(getenv("SEMREL_DRY_RUN"), "true") || getenv("SEMREL_DRY_RUN") == "1" || strings.EqualFold(getenv("SEMREL_PLUGIN_DRY_RUN"), "true") {
 		result, err := updater.Prepare(file, version, opts)
 		if err != nil {
 			_, _ = fmt.Fprintf(stderr, "updater-pubspec: %v\n", err)

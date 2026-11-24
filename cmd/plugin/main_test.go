@@ -29,12 +29,18 @@ func TestRunUpdatesPubspec(t *testing.T) {
 }
 
 func TestRunDryRunPrintsComputedVersionLine(t *testing.T) {
+	for _, value := range []string{"true", "1"} {
+		t.Run(value, func(t *testing.T) { runDryRunTest(t, value) })
+	}
+}
+
+func runDryRunTest(t *testing.T, value string) {
 	t.Parallel()
 
 	file := writePubspec(t, "version: 1.0.0+7\n")
 	env := map[string]string{
 		"SEMREL_VERSION":                       "1.1.0",
-		"SEMREL_DRY_RUN":                       "true",
+		"SEMREL_DRY_RUN":                       value,
 		"SEMREL_PLUGIN_PUBSPEC_PATH":           file,
 		"SEMREL_PLUGIN_PUBSPEC_BUILD_STRATEGY": "increment",
 	}
